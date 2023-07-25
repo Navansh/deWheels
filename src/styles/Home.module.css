@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     font-family: "Courier New", Courier, monospace;
-    background-image: linear-gradient(to right,#1D4350,#A43931);
+    /* background-image: linear-gradient(to right,#1D4350,#A43931); */
     height: auto;
 
   }
@@ -17,7 +17,7 @@
     right: 3%;
     font-family: 'Montserrat', sans-serif;
     /* border-top: 1px solid #eaeaea; */
-    
+
     /* margin-top:-70%; */
   }
   .footer {
@@ -27,32 +27,32 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .image {
     width: 70%;
     height: 50%;
     margin-left: 20%;
   }
-  
+
   .title {
     font-size: 2rem;
     margin: 2rem 0;
     font-weight: bold;
   }
-  
+
   .description {
     line-height: 1;
     margin: 2rem 0;
     font-size: 1.2rem;
   }
-  
-  
-  
+
+
+
   .button {
     border-radius: 4px;
-    background-color: blue;
+    background-color: #fff;
     border: none;
-    color: #ffffff;
+    color: #333;
     font-size: 15px;
     padding: 20px;
     margin-right: 40px;
@@ -60,7 +60,7 @@
     cursor: pointer;
     margin-bottom: 2%;
   }
-  
+
   .button1 {
     border-radius: 4px;
     background-color: blue;
