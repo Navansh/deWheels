@@ -1,1 +1,3 @@
 # deWheels
+
+deWheels is a decentralized peer-to-peer carpooling app that aims to reduce traffic congestion and promote a more sustainable approach to transportation. The app allows drivers to share rides with passengers who are traveling in the same direction, thereby reducing the number of cars on the road. deWheels provides a secure and reliable platform for carpooling, including a rating system to ensure a safe and positive experience for all users. By reducing the number of cars on the road and promoting ride-sharing, deWheels is helping to reduce carbon emissions and promote a more sustainable transportation system.
