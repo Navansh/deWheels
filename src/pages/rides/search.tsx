@@ -47,7 +47,7 @@ export default function Search() {
 		const contract = new ethers.Contract('0x618965ac64eb2CFF28cd821A66B5A111f3ea3234', abi, signer);
 
 		const _bookRide = await contract.bookRide(rideId);
-        await _bookRide.wait()
+		await _bookRide.wait();
 		console.log(_bookRide);
 		toast('Ride booked successfully');
 	};
@@ -55,8 +55,8 @@ export default function Search() {
 	console.log(rides);
 
 	return (
-		<div className="search_page py-20">
-			<div className="max-w-4xl mx-auto bg-white shadow-md p-8 rounded-lg text-gray-900 pt-10 z-50 relative">
+		<div className="search_page py-20 overflow-hidden min-h-screen">
+			<div className="max-w-4xl relative mx-auto bg-white shadow-md p-8 rounded-lg text-gray-900 pt-10 z-50 ">
 				<h2 className="text-2xl font-semibold mb-4">Search Ride</h2>
 
 				<form
@@ -114,7 +114,7 @@ export default function Search() {
 									<tr>
 										<th className="px-6 py-3">Origin</th>
 										<th className="px-6 py-3">Destination</th>
-                                        <th className="px-6 py-3">Departure Time</th>
+										<th className="px-6 py-3">Departure Time</th>
 										<th className="px-6 py-3">Price (Rs)</th>
 										<th className="px-6 py-3">Seats</th>
 										<th className="px-6 py-3"></th>
@@ -133,7 +133,7 @@ export default function Search() {
 												<td className="px-6 capitalize py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 													{ride[2]}
 												</td>
-                                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 													{Number(ride[3]._hex.toString())}
 												</td>
 												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
