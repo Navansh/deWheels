@@ -2,6 +2,8 @@ import { ethers } from 'ethers';
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
 import { abi } from '../../constants/abi';
+import { toast } from 'react-hot-toast';
+
 
 export default function Create() {
 	const [origin, setOrigin] = useState('');
@@ -17,8 +19,10 @@ export default function Create() {
 		const signer = await provider.getSigner();
 		const contract = new ethers.Contract('0x618965ac64eb2CFF28cd821A66B5A111f3ea3234', abi, signer);
 
-		const createRide = await contract.createride(origin, destination, departuretime, fare, seats);
-		console.log(createRide);
+		const createARide = await contract.createride(origin, destination, departuretime, fare, seats);
+        await createARide.wait()
+		console.log(createARide);
+        toast("Ride created successfully")
 	};
 
 	return (

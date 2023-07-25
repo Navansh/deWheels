@@ -15,10 +15,10 @@ export default function Search() {
 		setLoading(true);
 		const provider = new ethers.providers.Web3Provider((window as any).ethereum, 'any');
 
-		const contract = new ethers.Contract('0x542eF2fE377b93D668176e364284b0346F103e27', abi, provider);
+		const contract = new ethers.Contract('0x618965ac64eb2CFF28cd821A66B5A111f3ea3234', abi, provider);
 
 		const rideCount = await contract.ridecount();
-		console.log(rideCount);
+		console.log(Number(rideCount));
 
 		let validRides = [];
 
@@ -26,11 +26,11 @@ export default function Search() {
 			const ride = await contract.rides(i);
 			console.log('1:' + ride.origin);
 
-			validRides.push(ride);
+			// validRides.push(ride);
 
-			// if (ride.origin === origin && ride.destination === destination) {
-			// 	validRides.push(ride);
-			// }
+			if (ride.origin === origin && ride.destination === destination && Number(ride.seats._hex.toString()) > 0) {
+				validRides.push(ride);
+			}
 			console.log('2:' + validRides);
 		}
 
@@ -44,10 +44,11 @@ export default function Search() {
 	const bookRide = async (rideId: Number) => {
 		const provider = new ethers.providers.Web3Provider((window as any).ethereum, 'any');
 		const signer = await provider.getSigner();
-		const contract = new ethers.Contract('0x542eF2fE377b93D668176e364284b0346F103e27', abi, signer);
+		const contract = new ethers.Contract('0x618965ac64eb2CFF28cd821A66B5A111f3ea3234', abi, signer);
 
-		const bookRide = await contract.bookRide(rideId);
-		console.log(bookRide);
+		const _bookRide = await contract.bookRide(rideId);
+        await _bookRide.wait()
+		console.log(_bookRide);
 		toast('Ride booked successfully');
 	};
 
@@ -113,7 +114,8 @@ export default function Search() {
 									<tr>
 										<th className="px-6 py-3">Origin</th>
 										<th className="px-6 py-3">Destination</th>
-										<th className="px-6 py-3">Price</th>
+                                        <th className="px-6 py-3">Departure Time</th>
+										<th className="px-6 py-3">Price (Rs)</th>
 										<th className="px-6 py-3">Seats</th>
 										<th className="px-6 py-3"></th>
 									</tr>
@@ -131,11 +133,14 @@ export default function Search() {
 												<td className="px-6 capitalize py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 													{ride[2]}
 												</td>
-												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 													{Number(ride[3]._hex.toString())}
 												</td>
 												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-													{Number(ride[3]._hex.toString())}
+													{Number(ride[4]._hex.toString())}
+												</td>
+												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+													{Number(ride[5]._hex.toString())}
 												</td>
 												<td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
 													<button
